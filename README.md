@@ -1,4 +1,7 @@
-# Minimalist Zsh theme for me
+# K7 Minimalist Zsh theme
+
+This is a minimalist Zsh theme that displays the current Git branch and status, along with some useful icons and colors.
+Inspired by [Powerlevel10k](https://github.com/romkatv/powerlevel10k) and created with the minimal set of features that I need.
 
 ## Install Zsh
 
@@ -28,8 +31,7 @@ I use [JetBrainsMono Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases
 
 Install the fonts and set them as default on the terminal.
 
-
-# Add to the Zsh configuration
+## Add to the Zsh configuration
 
 Clone the repository and source the `K7.zsh` file in your `.zshrc`.
 
@@ -46,7 +48,6 @@ source ~/.zshrc
 ```
 Now you should see the new prompt with icons and colors.
 
-
-# License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
