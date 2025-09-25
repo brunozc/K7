@@ -4,7 +4,7 @@
 setopt PROMPT_SUBST
 
 # Load the key bindings
-source ./key_bindings.zsh
+source "${0:A:h}/key_bindings.zsh"
 
 # Function to get git branch (if in repo)
 git_branch() {
