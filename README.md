@@ -38,7 +38,7 @@ Clone the repository and source the `K7.zsh` file in your `.zshrc`.
 ```bash
 git clone https://github.com/brunozc/K7.git
 
-echo 'source /path/to/K7/K7.zsh' >> ~/.zshrc
+echo 'source /path/to/K7/K7.zsh-theme' >> ~/.zshrc
 ```
 Replace `/path/to/K7/` with the actual path where you cloned the repository.
 Then, restart your terminal or source your `.zshrc`:
