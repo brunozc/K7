@@ -3,6 +3,9 @@
 # Allows for command substitution in prompts
 setopt PROMPT_SUBST
 
+# Disable default virtual environment prompt modification
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
 # Load the key bindings
 source "${0:A:h}/key_bindings.zsh"
 
