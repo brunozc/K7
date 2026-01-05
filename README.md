@@ -11,16 +11,12 @@ On Fedora:
 
 ```bash
 sudo dnf install zsh
-
-chsh -s $(which zsh)
 ```
 
 On Debian:
 
 ```bash
 sudo apt install zsh
-
-chsh -s $(which zsh)
 ```
 Please make sure that you have made zsh your default shell:
 
