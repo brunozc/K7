@@ -22,6 +22,18 @@ sudo apt install zsh
 
 chsh -s $(which zsh)
 ```
+Please make sure that you have made zsh your default shell:
+
+```bash
+chsh -s $(which zsh)
+```
+
+Run the zsh wizard:
+
+```bash
+autoload -U zsh-newuser-install
+zsh-newuser-install -f
+```
 
 ## Install a Nerd Font
 
