@@ -42,6 +42,38 @@ python_venv() {
   print -r -- $'\uE606'" ${project_name//\%/%%}${python_version:+ ($python_version)}"
 }
 
+# Command duration, shown only for commands that take longer than 1 s
+zmodload zsh/datetime
+autoload -Uz add-zsh-hook
+
+# Record the start time of a command [s]
+_k7_preexec() {
+  _k7_cmd_start=$EPOCHREALTIME
+}
+
+# Format the duration of the last command into _k7_cmd_duration
+_k7_precmd() {
+  emulate -L zsh
+  _k7_cmd_duration=
+  # preexec does not run for an empty command line, so there is nothing to time
+  [[ -n $_k7_cmd_start ]] || return
+  local -F elapsed=$(( EPOCHREALTIME - _k7_cmd_start ))
+  unset _k7_cmd_start
+  (( elapsed > 1 )) || return
+  # integer math avoids rounding 59.97 s up to "60.0s" and locale decimal commas
+  local -i tenths=$(( elapsed * 10 )) total=$(( elapsed ))
+  if (( total < 60 )); then
+    _k7_cmd_duration="$(( tenths / 10 )).$(( tenths % 10 ))s"
+  elif (( total < 3600 )); then
+    _k7_cmd_duration="$(( total / 60 ))m $(( total % 60 ))s"
+  else
+    _k7_cmd_duration="$(( total / 3600 ))h $(( total % 3600 / 60 ))m"
+  fi
+}
+
+add-zsh-hook preexec _k7_preexec
+add-zsh-hook precmd _k7_precmd
+
 # Set the prompt and right prompt
 PROMPT=$'%F{blue} \uF115 %~%f\u007C%F{red}$(git_branch)%f '
-RPROMPT=$'%(?.%F{green} \uEAB2 %f.%F{red} \uEA76 %f) %F{blue}$(python_venv)%f'
+RPROMPT=$'%(?.%F{green} \uEAB2 %f.%F{red} \uEA76 %f) %F{yellow}${_k7_cmd_duration:+\uF017 $_k7_cmd_duration }%f%F{blue}$(python_venv)%f'

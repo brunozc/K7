@@ -17,6 +17,7 @@ Inspired by [Powerlevel10k](https://github.com/romkatv/powerlevel10k) and create
 | Segment | Description |
 | --- | --- |
 | Last command status | Green check mark if the last command succeeded, red cross if it failed. |
+| Command duration | Clock icon followed by how long the last command took, shown only when it took longer than 1 s (yellow). Formatted as `3.4s`, `2m 5s` or `1h 2m`. |
 | Python virtual environment | Python icon, project name (the folder containing the venv) and Python version, shown only when a venv is active (blue). The version is read from the venv's `pyvenv.cfg`, so no Python process is started on every prompt. |
 
 The theme sets `VIRTUAL_ENV_DISABLE_PROMPT=1`, so activating a venv does not prepend its own `(venv)` tag to the prompt.
