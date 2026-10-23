@@ -9,6 +9,7 @@ Inspired by [Powerlevel10k](https://github.com/romkatv/powerlevel10k) and create
 
 | Segment | Description |
 | --- | --- |
+| NordVPN | Lock icon, shown only while a NordVPN tunnel is up, detected by its `nordlynx` (NordLynx) or `nordtun` (OpenVPN) network interface (green). |
 | Current directory | Folder icon followed by the working directory, with `$HOME` abbreviated to `~` (blue). |
 | Git branch | Branch icon followed by the current branch name, or the short commit hash on a detached HEAD, shown only inside a Git repository (red). |
 

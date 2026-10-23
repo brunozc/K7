@@ -74,6 +74,17 @@ _k7_precmd() {
 add-zsh-hook preexec _k7_preexec
 add-zsh-hook precmd _k7_precmd
 
+# Detect a NordVPN connection by its tunnel interface (nordlynx for NordLynx, nordtun for OpenVPN)
+_k7_vpn_precmd() {
+  _k7_vpn=
+  # a sysfs check avoids calling the nordvpn cli on every prompt
+  if [[ -e /sys/class/net/nordlynx || -e /sys/class/net/nordtun ]]; then
+    _k7_vpn=1
+  fi
+}
+
+add-zsh-hook precmd _k7_vpn_precmd
+
 # Set the prompt and right prompt
-PROMPT=$'%F{blue} \uF115 %~%f\u007C%F{red}$(git_branch)%f '
+PROMPT=$'%F{green}${_k7_vpn:+ \uEA75}%f%F{blue} \uF115 %~%f\u007C%F{red}$(git_branch)%f '
 RPROMPT=$'%(?.%F{green} \uEAB2 %f.%F{red} \uEA76 %f) %F{yellow}${_k7_cmd_duration:+\uF017 $_k7_cmd_duration }%f%F{blue}$(python_venv)%f'
